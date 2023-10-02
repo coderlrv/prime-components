@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./out-tsc",
+    "tsBuildInfoFile": ".tsbuildinfo",
+  },
+  "include": ["./src/index.ts"],
+  "exclude": ["node_modules"]
+}
