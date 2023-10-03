@@ -1,27 +1,24 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "build",
+    "module": "esnext",
     "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "react",
-    "sourceMap": true,
-    "incremental": true,
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
-    "rootDir": "./src",
-    "outDir": "./out-tsc",
-    "tsBuildInfoFile": ".tsbuildinfo",
-    "declaration": true
+    "esModuleInterop": true,
+    "rootDir": "./src"
   },
-  "include": ["./src/index.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx"
+  ]
 }
