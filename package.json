@@ -1,12 +1,14 @@
 {
-  "name": "prime-components",
-  "version": "1.0.0",
+  "name": "@coder-lrv/prime-components",
+  "version": "0.0.1",
   "license": "MIT",
-  "main": "dist/prime-components.js",
-  "typings": "dist/prime-components.d.ts",
+  "private": false,
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rollup -c"
+    "build": "tsc && rollup -c",
+    "publish": ""
   },
   "dependencies": {
     "eslint": "8.44.0",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^3.0.2",
+    "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-typescript": "^11.1.4",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",

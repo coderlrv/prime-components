@@ -19,7 +19,7 @@ export type InputPasswordProps = {
   value?: string | null;
 } & Omit<PasswordProps, 'value'>;
 
-const InputPassword = forwardRef<PasswordProps, InputPasswordProps>(
+const InputPassword = forwardRef<Password, InputPasswordProps>(
   (
     {
       id,
@@ -42,6 +42,7 @@ const InputPassword = forwardRef<PasswordProps, InputPasswordProps>(
         <Password
           inputId={id}
           name={name}
+          ref={ref}
           aria-label={label}
           placeholder={placeholder}
           inputStyle={props.style}

@@ -2,10 +2,9 @@ import React from 'react';
 import { Dialog, DialogProps } from "primereact/dialog";
 import { classNames } from "primereact/utils";
 
-type DialogModalProps = {
+export type DialogModalProps = {
   size: 'sm'| 'md' | 'lg' | 'xl'
 } & DialogProps;
-
 
 const DialogModal: React.FC<DialogModalProps> = (props) => {
 

@@ -1,12 +1,12 @@
 
-import { Input, type InputProps } from './Input';
-import { InputDropdown, type InputDropdownProps } from './InputDropdown';
-import { InputEditor,  type InputEditorProps } from './InputEditor';
-import { InputNumber, type InputNumberProps } from './InputNumber';
-import { InputPassword, type InputPasswordProps } from './InputPassword';
-import { InputDate, type InputDateProps } from './InputDate';
-import { InputFile, type InputFileProps } from './InputFile';
-import { InputMultiSelect, type InputMultiSelectProps } from './InputMultiSelect';
+import { Input, type InputProps } from './input/Input';
+import { InputDropdown, type InputDropdownProps } from './dropdown/InputDropdown';
+import { InputEditor,  type InputEditorProps } from './editor/InputEditor';
+import { InputNumber, type InputNumberProps } from './number/InputNumber';
+import { InputPassword, type InputPasswordProps } from './password/InputPassword';
+import { InputDate, type InputDateProps } from './date/InputDate';
+import { InputFile, type InputFileProps } from './file/InputFile';
+import { InputMultiSelect, type InputMultiSelectProps } from './multiSelect/InputMultiSelect';
 
 export {
   Input,

@@ -1,34 +1,35 @@
-import { InputTextProps } from 'primereact/inputtext';
-import { Dropdown, DropdownProps } from 'primereact/dropdown';
-import { classNames } from 'primereact/utils';
 import React, {
   forwardRef,
 } from 'react';
+import { InputText, InputTextProps } from 'primereact/inputtext';
+import { classNames } from 'primereact/utils';
 
 export type InputType = 'text' | 'email' | 'password' | 'date';
 
-export type InputDropdownClasses = {
+export type InputClasses = {
   group?: string;
   input?: string;
   label?: string;
 }
 
-export type InputDropdownProps = {
+export type InputProps = {
   id?: string;
   name: string;
   label: string;
   type?: InputType;
-  classes?: InputDropdownClasses;
+  classes?: InputClasses;
   error?: string;
-  onChange: (value: any) => void;
-} & Omit<DropdownProps, 'onChange'>;
+  value?: string | null;
+  onChange: (value: string | null) => void;
+} & Omit<InputTextProps, 'onChange' | 'value'>;
 
-const InputDropdown = forwardRef<InputTextProps, InputDropdownProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       id,
       name,
       label,
+      type = 'text',
       classes,
       placeholder,
       error,
@@ -44,16 +45,16 @@ const InputDropdown = forwardRef<InputTextProps, InputDropdownProps>(
           htmlFor={name}
           className={classNames(['font-medium mb-1', classes?.label])}>{label}</label>
 
-        <Dropdown
+        <InputText
           id={id}
+          ref={ref}
           name={name}
+          type={type}
           aria-label={label}
           placeholder={placeholder}
-          value={value}
+          value={value || undefined}
           className={classNames({ 'is-invalid': error }, classes?.input)}
-          onChange={(event) =>{
-            onChange(event.value);
-          }}
+          onChange={(event) => onChange(event.target.value)}
           {...props}
         />
 
@@ -63,8 +64,6 @@ const InputDropdown = forwardRef<InputTextProps, InputDropdownProps>(
   }
 );
 
-InputDropdown.displayName = 'InputDropdown';
+Input.displayName = 'Input';
 
-export {
-  InputDropdown
-};
+export { Input };

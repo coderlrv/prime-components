@@ -4,10 +4,8 @@ import React, {
 } from 'react';
 
 import { Calendar, CalendarProps } from 'primereact/calendar';
-import { Nullable } from 'primereact/ts-helpers';
 import { addLocale } from 'primereact/api';
-
-import ptbr from './InputDateLanguage.json';
+import ptbr from './InputDateLanguage.json' assert { type: 'json' };
 addLocale('pt',ptbr);
 
 export type InputDateClasses = {

@@ -17,13 +17,12 @@ export type InputNumberProps = {
   onChange: (value: number) => void;
 } & Omit<InputProps, 'onChange'>;
 
-const InputNumber = forwardRef<InputProps, InputNumberProps>(
+const InputNumber = forwardRef<Input, InputNumberProps>(
   (
     {
       id,
       name,
       label,
-      type = 'text',
       classes,
       placeholder,
       error,
@@ -41,8 +40,8 @@ const InputNumber = forwardRef<InputProps, InputNumberProps>(
 
         <Input
           id={id}
+          ref={ref}
           name={name}
-          type={type}
           aria-label={label}
           placeholder={placeholder}
           value={value}
@@ -59,6 +58,6 @@ const InputNumber = forwardRef<InputProps, InputNumberProps>(
 
 InputNumber.displayName = 'InputNumber';
 
-export { 
-  InputNumber 
+export {
+  InputNumber
 };

@@ -1,28 +1,23 @@
-import { MultiSelect, MultiSelectProps } from 'primereact/multiselect';
+import { Dropdown, DropdownProps } from 'primereact/dropdown';
 import { classNames } from 'primereact/utils';
-import React, {
-  forwardRef, useMemo,
-} from 'react';
+import React, { forwardRef } from 'react';
 
-export type InputMultiSelectClasses = {
+export type InputDropdownClasses = {
   group?: string;
   input?: string;
   label?: string;
 }
 
-export type InputMultiSelectProps = {
+export type InputDropdownProps = {
   id?: string;
   name: string;
   label: string;
-  classes?: InputMultiSelectClasses;
+  classes?: InputDropdownClasses;
   error?: string;
-  getOptionValue?: (value: any) => void;
   onChange: (value: any) => void;
-} & Omit<MultiSelectProps, 'onChange'>;
+} & Omit<DropdownProps, 'onChange'>;
 
-const defaultValue = (option: any) => option?.id;
-
-const InputMultiSelect = forwardRef<MultiSelectProps, InputMultiSelectProps>(
+const InputDropdown = forwardRef<Dropdown, InputDropdownProps>(
   (
     {
       id,
@@ -32,30 +27,27 @@ const InputMultiSelect = forwardRef<MultiSelectProps, InputMultiSelectProps>(
       placeholder,
       error,
       onChange,
+      value,
       ...props
     },
     ref
   ) => {
-    const optionsValue = props.getOptionValue ? props.getOptionValue : defaultValue;
-
-    const values = props.options?.filter(option => props.value?.includes(optionsValue(option)));
-
     return (
       <div className={classNames('flex flex-column mb-3', classes?.group, { 'p-error': error })}>
         <label
           htmlFor={name}
           className={classNames(['font-medium mb-1', classes?.label])}>{label}</label>
 
-        <MultiSelect
+        <Dropdown
           id={id}
           name={name}
+          ref={ref}
           aria-label={label}
           placeholder={placeholder}
-          value={values}
-          optionValue='id'
+          value={value}
           className={classNames({ 'is-invalid': error }, classes?.input)}
           onChange={(event) => {
-            onChange(event.value)
+            onChange(event.value);
           }}
           {...props}
         />
@@ -66,8 +58,8 @@ const InputMultiSelect = forwardRef<MultiSelectProps, InputMultiSelectProps>(
   }
 );
 
-InputMultiSelect.displayName = 'InputMultiSelect';
+InputDropdown.displayName = 'InputDropdown';
 
 export {
-  InputMultiSelect
+  InputDropdown
 };

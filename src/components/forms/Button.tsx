@@ -1,6 +1,4 @@
-import React from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
@@ -11,9 +9,6 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 const Button = ({ children, icon, isLoading, ...props }: ButtonProps) => {
   return (
     <button {...props}>
-      {/* { isLoading && (
-        <FontAwesomeIcon icon={faCircleNotch} spin size="xs" style={{marginRight: '10'}}/>
-      )} */}
       {children}
     </button>
   );

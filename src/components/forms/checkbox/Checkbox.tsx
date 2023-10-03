@@ -21,7 +21,7 @@ export type InputCheckboxProps = {
   onChange: (value: any) => void;
 } & Omit<CheckboxProps, 'onChange' | 'checked'>;
 
-const InputCheckbox = forwardRef<CheckboxProps, InputCheckboxProps>(
+const InputCheckbox = forwardRef<Checkbox, InputCheckboxProps>(
   (
     {
       id,
@@ -36,11 +36,13 @@ const InputCheckbox = forwardRef<CheckboxProps, InputCheckboxProps>(
     },
     ref
   ) => {
+
     return (
       <div className={classNames(['mb-3', classes?.group, error ? 'p-error' : ''])}>
         <Checkbox
           id={id}
           name={name}
+          ref={ref}
           placeholder={placeholder}
           className={classNames(['form-check-input', error ? 'is-invalid' : ''])}
           checked={value || false}

@@ -1,40 +1,33 @@
-import { InputText, InputTextProps } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
+import { InputTextarea, InputTextareaProps } from "primereact/inputtextarea";
 import React, {
   forwardRef,
 } from 'react';
 
-export type InputType = 'text' | 'email' | 'password' | 'date';
-
-export type InputClasses = {
+export type TextAreaClasses = {
   group?: string;
   input?: string;
   label?: string;
 }
 
-export type InputProps = {
+export type TextAreaProps = {
   id?: string;
   name: string;
   label: string;
-  type?: InputType;
-  classes?: InputClasses;
+  classes?: TextAreaClasses;
   error?: string;
-  value?: string | null;
-  onChange: (value: string | null) => void;
-} & Omit<InputTextProps, 'onChange' | 'value'>;
+  onChange: (value: string) => void;
+} & Omit<InputTextareaProps, 'onChange'>;
 
-const Input = forwardRef<InputTextProps, InputProps>(
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
       id,
       name,
       label,
-      type = 'text',
       classes,
-      placeholder,
       error,
       onChange,
-      value,
       ...props
     },
     ref
@@ -45,15 +38,15 @@ const Input = forwardRef<InputTextProps, InputProps>(
           htmlFor={name}
           className={classNames(['font-medium mb-1', classes?.label])}>{label}</label>
 
-        <InputText
+        <InputTextarea
           id={id}
           name={name}
-          type={type}
+          ref={ref}
           aria-label={label}
-          placeholder={placeholder}
-          value={value || undefined}
           className={classNames({ 'is-invalid': error }, classes?.input)}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => {
+            onChange(event.target.value);
+          }}
           {...props}
         />
 
@@ -63,6 +56,6 @@ const Input = forwardRef<InputTextProps, InputProps>(
   }
 );
 
-Input.displayName = 'Input';
+TextArea.displayName = 'TextArea';
 
-export { Input };
+export default TextArea;

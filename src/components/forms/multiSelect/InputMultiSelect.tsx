@@ -1,31 +1,31 @@
+import React, { forwardRef } from 'react';
+import { MultiSelect, MultiSelectProps } from 'primereact/multiselect';
 import { classNames } from 'primereact/utils';
-import { InputTextarea, InputTextareaProps } from "primereact/inputtextarea";
-import React, {
-  forwardRef,
-} from 'react';
 
-export type TextAreaClasses = {
+export type InputMultiSelectClasses = {
   group?: string;
   input?: string;
   label?: string;
 }
 
-export type TextAreaProps = {
+export type InputMultiSelectProps = {
   id?: string;
   name: string;
   label: string;
-  classes?: TextAreaClasses;
+  classes?: InputMultiSelectClasses;
   error?: string;
-  onChange: (value: string) => void;
-} & Omit<InputTextareaProps, 'onChange'>;
+  getOptionValue?: (value: any) => void;
+  onChange: (value: any) => void;
+} & Omit<MultiSelectProps, 'onChange'>;
 
-const TextArea = forwardRef<InputTextareaProps, TextAreaProps>(
+const InputMultiSelect = forwardRef<MultiSelect, InputMultiSelectProps>(
   (
     {
       id,
       name,
       label,
       classes,
+      placeholder,
       error,
       onChange,
       ...props
@@ -38,13 +38,16 @@ const TextArea = forwardRef<InputTextareaProps, TextAreaProps>(
           htmlFor={name}
           className={classNames(['font-medium mb-1', classes?.label])}>{label}</label>
 
-        <InputTextarea
+        <MultiSelect
           id={id}
+          ref={ref}
           name={name}
           aria-label={label}
+          placeholder={placeholder}
+          value={props.value}
           className={classNames({ 'is-invalid': error }, classes?.input)}
           onChange={(event) => {
-            onChange(event.target.value);
+            onChange(event.value)
           }}
           {...props}
         />
@@ -55,6 +58,8 @@ const TextArea = forwardRef<InputTextareaProps, TextAreaProps>(
   }
 );
 
-TextArea.displayName = 'TextArea';
+InputMultiSelect.displayName = 'InputMultiSelect';
 
-export default TextArea;
+export {
+  InputMultiSelect
+};
